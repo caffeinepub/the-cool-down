@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build “The Cool Down,” an AI stress-response app with a calming dark-mode dashboard, real-time BPM monitoring, BPM-triggered lockout, guided breathing intervention, and an anger-text “shield” UI with soothing animations and minimalist styling.",
+  "architectural_notes": [
+    "Use Framer Motion for smooth, de-escalating UI transitions and animations.",
+    "Core state should be driven by real-time BPM input to trigger lockout and interventions."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-the-dashboard-screen-in-a-calming-dark-mode-ui-that-shows-a-real-time-bpm-line-graph-and-includes-a-stimulate-anger-spike-button-that-simulates-a-temporary-bpm-increase-for-testing",
+      "title": "Create the Dashboard screen in a calming dark-mode UI that shows a real-time BPM line graph and includes a “Stimulate Anger Spike” button that simulates a temporary BPM increase for testing.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-trigger-logic-when-bpm-exceeds-100-enter-an-unskippable-lockout-mode-for-30-seconds-blocking-normal-interactions-until-the-timer-completes",
+      "title": "Implement trigger logic: when BPM exceeds 100, enter an unskippable “Lockout Mode” for 30 seconds, blocking normal interactions until the timer completes.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-intervention-ui-shown-during-escalation-lockout-that-displays-a-pulsing-box-breathing-animation-with-a-4-second-inhale-4-second-hold-and-4-second-exhale-loop-plus-a-visible-10-second-countdown",
+      "title": "Build the Intervention UI shown during escalation/lockout that displays a pulsing Box Breathing animation with a 4-second inhale, 4-second hold, and 4-second exhale loop, plus a visible 10-second countdown.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-rage-text-shield-section-a-text-area-where-users-can-type-their-anger-and-a-dissolve-button-that-clears-the-text-using-a-cloud-like-dissolve-animation-instead-of-sending-the-text-anywhere",
+      "title": "Add the “Rage text shield” section: a text area where users can type their anger and a “Dissolve” button that clears the text using a cloud-like dissolve animation instead of sending the text anywhere.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-minimalist-visual-style-across-the-app-using-a-dark-mode-palette-of-blues-and-forest-greens-and-implement-smooth-de-escalating-transitions-using-framer-motion-for-screen-overlay-changes-and-key-ui-animations",
+      "title": "Apply a minimalist visual style across the app using a dark mode palette of blues and forest greens, and implement smooth, de-escalating transitions using Framer Motion for screen/overlay changes and key UI animations.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-optional-user-toggleable-audio-cues-that-guide-the-box-breathing-phases-inhale-hold-exhale-hold-during-the-lockout-intervention-ui-without-changing-the-existing-4-second-phase-timing",
+      "title": "Add optional, user-toggleable audio cues that guide the Box Breathing phases (inhale, hold, exhale, hold) during the lockout Intervention UI, without changing the existing 4-second phase timing.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-an-in-ui-control-on-the-lockout-overlay-to-enable-disable-breathing-audio-cues-with-clear-english-labels-and-a-visible-enabled-disabled-state",
+      "title": "Provide an in-UI control on the lockout overlay to enable/disable breathing audio cues, with clear English labels and a visible enabled/disabled state.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-handle-browser-autoplay-restrictions-by-requiring-an-explicit-user-gesture-before-starting-breathing-audio-and-ensure-the-app-fails-gracefully-no-crashes-if-audio-cannot-be-started",
+      "title": "Handle browser autoplay restrictions by requiring an explicit user gesture before starting breathing audio, and ensure the app fails gracefully (no crashes) if audio cannot be started.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create Dashboard with calming dark-mode UI and real-time BPM graph",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add “Stimulate Anger Spike” test button to simulate elevated BPM",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement trigger logic: when BPM > 100, enter unskippable 30-second Lockout Mode",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Build Intervention screen with pulsing Box Breathing animation (4s inhale/hold/exhale) plus 10s countdown",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add “Rage text shield”: text area for typing anger with a Dissolve button that clears text using a cloud animation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Apply minimalist visual style (blues + forest greens) with smooth de-escalating transitions using Framer Motion",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add optional audio cues to guide the box-breathing cycle during the intervention (e.g., inhale/hold/exhale cues)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "The Cool Down",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

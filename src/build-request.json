@@ -1,0 +1,88 @@
+{
+  "kind": "build_request",
+  "title": "Add optional audio cues for the box-breathing cycle during lockout intervention",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "text": "Add optional, user-toggleable audio cues that guide the Box Breathing phases (inhale, hold, exhale, hold) during the lockout Intervention UI, without changing the existing 4-second phase timing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-4"
+        ],
+        "quotes": [
+          "Want to add optional audio cues for the breathing cycle next?",
+          "Yes please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Audio cues are OFF by default.",
+        "When audio cues are enabled, a distinct cue plays at each phase transition in the box-breathing loop (inhale, hold, exhale, hold).",
+        "The cues stay synchronized with the existing 4-second phase cadence used by the current BoxBreathing component.",
+        "Audio cues only play while the Intervention UI is active (i.e., during lockout) and stop immediately when lockout ends/unmounts."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Provide an in-UI control on the lockout overlay to enable/disable breathing audio cues, with clear English labels and a visible enabled/disabled state.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Yes please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The lockout overlay includes an audio toggle control with English text (e.g., \"Audio cues: Off/On\" or \"Enable audio cues\").",
+        "Toggling the control takes effect immediately for subsequent phase transitions.",
+        "The control does not allow bypassing or dismissing lockout mode and does not re-enable other blocked interactions."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Handle browser autoplay restrictions by requiring an explicit user gesture before starting breathing audio, and ensure the app fails gracefully (no crashes) if audio cannot be started.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Yes please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If the browser blocks audio playback until user interaction, the UI flow still works and the app remains usable; audio simply remains silent until enabled via the provided control.",
+        "No console errors are thrown repeatedly during lockout due to failed audio playback attempts (failures are handled/guarded).",
+        "Disabling audio always stops any currently-playing cue immediately (or within a negligible delay)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep the existing box-breathing timing (4 seconds per phase) and the existing lockout behavior (unskippable 30 seconds).",
+    "Do not introduce new backend dependencies; backend/main.mo should remain unchanged unless strictly necessary."
+  ],
+  "nonGoals": [
+    "Adding third-party audio libraries or external audio streaming services.",
+    "Persisting audio settings to the backend or tying them to Internet Identity profiles.",
+    "Adding real-time features (WebSockets) or notifications."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T02:59:37.911Z",
+  "summary": "Diff adds a Web Audio API–based breathing cue system via a new hook, wires phase-transition callbacks from BoxBreathing into the InterventionPanel, and adds an Audio cues On/Off toggle button on the lockout overlay. Most REQ-6/7 behaviors appear implemented, but the “explicit user gesture” arming for autoplay restrictions may not be satisfied because audio arming is triggered in an effect rather than directly in the click handler.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Handle browser autoplay restrictions by requiring an explicit user gesture before starting breathing audio.",
+      "reason": "The diff arms/starts the AudioContext from a useEffect reacting to state (audioEnabled) rather than directly within the user’s click handler. Some browsers require AudioContext creation/resume to occur synchronously within the user gesture event stack; doing it in an effect may still be blocked, which would not meet the explicit-gesture requirement.",
+      "evidence": [
+        "frontend/src/components/LockoutOverlay.tsx (onClick only toggles state via setAudioEnabled)",
+        "frontend/src/components/InterventionPanel.tsx (useEffect calls arm() when audioEnabled becomes true)",
+        "frontend/src/hooks/useBreathingAudioCues.ts (AudioContext created/resumed inside arm())"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Adds UI icons (Volume2/VolumeX) from lucide-react for the audio toggle button.",
+      "reason": "BuildRequest requires a clear English-labeled toggle but does not request adding iconography or specifically using lucide-react icons.",
+      "evidence": [
+        "frontend/src/components/LockoutOverlay.tsx (imports Volume2, VolumeX from 'lucide-react')"
+      ]
+    }
+  ],
+  "confidence": 0.66,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/BoxBreathing.tsx",
+    "frontend/src/components/InterventionPanel.tsx",
+    "frontend/src/components/LockoutOverlay.tsx",
+    "frontend/src/hooks/useBreathingAudioCues.ts",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Optional box-breathing audio cues during lockout intervention",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "summary": "Play optional, distinct audio cues on each box-breathing phase transition during lockout, staying synchronized with the existing 4s cadence and stopping on unmount.",
+      "acceptanceCriteria": [
+        "Audio cues are OFF by default.",
+        "When audio cues are enabled, a distinct cue plays at each phase transition in the box-breathing loop (inhale, hold, exhale, hold).",
+        "The cues stay synchronized with the existing 4-second phase cadence used by the current BoxBreathing component.",
+        "Audio cues only play while the Intervention UI is active (i.e., during lockout) and stop immediately when lockout ends/unmounts."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BoxBreathing.tsx",
+          "operation": "modify",
+          "description": "Add an optional prop (e.g., onPhaseChange) that is invoked exactly at each 4-second phase transition (inhale/hold/exhale/hold) without altering the existing 4000ms timing logic; ensure cleanup on unmount so no callbacks fire after unmount."
+        },
+        {
+          "path": "frontend/src/hooks/useBreathingAudioCues.ts",
+          "operation": "create",
+          "description": "Implement a lightweight, dependency-free audio cue utility (e.g., via Web Audio API oscillator tones) that can play distinct short cues per phase, supports immediate stop, and cleans up any audio resources on unmount/disable; gracefully no-op if audio is unavailable/blocked."
+        },
+        {
+          "path": "frontend/src/components/InterventionPanel.tsx",
+          "operation": "modify",
+          "description": "Wire BoxBreathing phase transitions to the audio cue player when enabled (passed from the lockout overlay), ensuring cues trigger only on transitions and only while the intervention UI is mounted (lockout active)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add an in-overlay toggle control with clear English labels to enable/disable breathing audio cues immediately without affecting lockout restrictions.",
+      "acceptanceCriteria": [
+        "The lockout overlay includes an audio toggle control with English text (e.g., \"Audio cues: Off/On\" or \"Enable audio cues\").",
+        "Toggling the control takes effect immediately for subsequent phase transitions.",
+        "The control does not allow bypassing or dismissing lockout mode and does not re-enable other blocked interactions."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LockoutOverlay.tsx",
+          "operation": "modify",
+          "description": "Add local state for audio-cues enabled (default OFF) and render a clearly labeled toggle control on the lockout overlay; use a shadcn-ui Button (or existing shadcn-ui control available in the project) to show a visible enabled/disabled state. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/InterventionPanel.tsx",
+          "operation": "modify",
+          "description": "Accept audio-enabled (and any needed audio control callbacks) as props from LockoutOverlay and ensure toggling immediately affects subsequent BoxBreathing phase transition cues (no timing changes, no lockout bypass)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Respect browser autoplay restrictions by starting audio only after explicit user gesture and handle failures silently without repeated console errors; disabling stops audio immediately.",
+      "acceptanceCriteria": [
+        "If the browser blocks audio playback until user interaction, the UI flow still works and the app remains usable; audio simply remains silent until enabled via the provided control.",
+        "No console errors are thrown repeatedly during lockout due to failed audio playback attempts (failures are handled/guarded).",
+        "Disabling audio always stops any currently-playing cue immediately (or within a negligible delay)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useBreathingAudioCues.ts",
+          "operation": "create",
+          "description": "Gate audio initialization/resume behind an explicit user gesture method (called from the toggle control click), catch and memoize any failures to avoid repeated attempts/log spam, and provide an immediate stop() used when toggling OFF or unmounting; ensure all failures degrade to silent no-ops without crashes."
+        },
+        {
+          "path": "frontend/src/components/LockoutOverlay.tsx",
+          "operation": "modify",
+          "description": "On toggle ON (user click), call the hook’s user-gesture arm/resume function before enabling playback, and on toggle OFF call the hook’s stop() to end any currently-playing cue immediately; keep behavior scoped to lockout overlay lifecycle."
+        },
+        {
+          "path": "frontend/src/components/InterventionPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure phase-change cue playback is guarded (only attempt when enabled and armed) so blocked playback does not trigger repeated errors; ensure unmount triggers stop/cleanup via the provided hook API."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-optional-user-toggleable-audio-cues-that-guide-the-box-breathing-phases-inhale-hold-exhale-hold-during-the-lockout-intervention-ui-without-changing-the-existing-4-second-phase-timing",
+      "featureTitle": "Add optional, user-toggleable audio cues that guide the Box Breathing phases (inhale, hold, exhale, hold) during the lockout Intervention UI, without changing the existing 4-second phase timing.",
+      "files": [
+        "frontend/src/components/BoxBreathing.tsx",
+        "frontend/src/components/InterventionPanel.tsx",
+        "frontend/src/hooks/useBreathingAudioCues.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-an-in-ui-control-on-the-lockout-overlay-to-enable-disable-breathing-audio-cues-with-clear-english-labels-and-a-visible-enabled-disabled-state",
+      "featureTitle": "Provide an in-UI control on the lockout overlay to enable/disable breathing audio cues, with clear English labels and a visible enabled/disabled state.",
+      "files": [
+        "frontend/src/components/InterventionPanel.tsx",
+        "frontend/src/components/LockoutOverlay.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-handle-browser-autoplay-restrictions-by-requiring-an-explicit-user-gesture-before-starting-breathing-audio-and-ensure-the-app-fails-gracefully-no-crashes-if-audio-cannot-be-started",
+      "featureTitle": "Handle browser autoplay restrictions by requiring an explicit user gesture before starting breathing audio, and ensure the app fails gracefully (no crashes) if audio cannot be started.",
+      "files": [
+        "frontend/src/components/InterventionPanel.tsx",
+        "frontend/src/components/LockoutOverlay.tsx",
+        "frontend/src/hooks/useBreathingAudioCues.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T02:59:37.913Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-6",
+        "summary": "Add optional, user-toggleable audio cues that guide the Box Breathing phases (inhale, hold, exhale, hold) during the lockout Intervention UI, without changing the existing 4-second phase timing.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/BoxBreathing.tsx",
+          "frontend/src/hooks/useBreathingAudioCues.ts",
+          "frontend/src/components/InterventionPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/BoxBreathing.tsx",
+          "frontend/src/hooks/useBreathingAudioCues.ts",
+          "frontend/src/components/InterventionPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Provide an in-UI control on the lockout overlay to enable/disable breathing audio cues, with clear English labels and a visible enabled/disabled state.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/LockoutOverlay.tsx",
+          "frontend/src/components/InterventionPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/LockoutOverlay.tsx",
+          "frontend/src/components/InterventionPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Handle browser autoplay restrictions by requiring an explicit user gesture before starting breathing audio, and ensure the app fails gracefully (no crashes) if audio cannot be started.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useBreathingAudioCues.ts",
+          "frontend/src/components/LockoutOverlay.tsx",
+          "frontend/src/components/InterventionPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useBreathingAudioCues.ts",
+          "frontend/src/components/LockoutOverlay.tsx",
+          "frontend/src/components/InterventionPanel.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/BoxBreathing.tsx",
+    "frontend/src/components/InterventionPanel.tsx",
+    "frontend/src/components/LockoutOverlay.tsx",
+    "frontend/src/hooks/useBreathingAudioCues.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

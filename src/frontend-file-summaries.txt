@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main application component that orchestrates the BPM simulation, lockout logic, and renders the dashboard with a lockout overlay when BPM exceeds 100, using CSS transitions instead of Framer Motion.",
+  "frontend/src/hooks/useSimulatedBpm.ts": "Custom hook that simulates real-time BPM data with natural variation, maintains a 30-second rolling history for graphing, and provides a spike simulation function for testing.",
+  "frontend/src/hooks/useLockout.ts": "Custom hook that manages the 30-second lockout state, countdown timer, and prevents re-triggering while active.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file for backend queries (not needed for this local-only application).",
+  "frontend/src/components/DashboardScreen.tsx": "Main dashboard view displaying the current BPM, real-time graph, test spike button, and rage text shield in a calming dark-mode layout.",
+  "frontend/src/components/BpmLineGraph.tsx": "SVG-based line graph component that renders the BPM history with a threshold indicator at 100 BPM and responsive scaling.",
+  "frontend/src/components/LockoutOverlay.tsx": "Full-screen unskippable overlay that appears during lockout mode, displaying the intervention panel, remaining lockout time, and an audio toggle control with clear on/off labels using smooth CSS-based animations.",
+  "frontend/src/components/InterventionPanel.tsx": "Container component that combines the box breathing animation with a 10-second intervention countdown cycle, wires audio cues to phase transitions when enabled, and ensures cleanup on unmount.",
+  "frontend/src/components/BoxBreathing.tsx": "Animated breathing guide that cycles through 4-second inhale/hold/exhale/hold phases with a pulsing visual circle, phase labels, and an optional onPhaseChange callback that fires at exact phase transitions.",
+  "frontend/src/components/RageTextShield.tsx": "Text area for typing anger with a \"Dissolve\" button that triggers a cloud-like particle animation using CSS keyframes before clearing the text.",
+  "frontend/src/index.css": "Global styles with a calming dark-mode color palette using blues and forest greens in OKLCH color space, plus custom CSS animations for smooth de-escalating transitions throughout the app.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, custom border radius, and Inter font family for a polished minimalist aesthetic.",
+  "frontend/src/hooks/useBreathingAudioCues.ts": "Custom hook that manages Web Audio API-based breathing cues with distinct tones per phase, handles browser autoplay restrictions via explicit user gesture arming, and provides immediate stop/cleanup on disable or unmount."
+}
